@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@null">
+
+    <!-- 美颜 -->
+    <RelativeLayout
+        android:id="@+id/beauty_layout"
+        android:layout_width="match_parent"
+        android:layout_height="178.3dp"
+        android:background="#b2ffffff"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/whitening_image"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="left"
+                        android:background="@drawable/icon_whitening"/>
+                    <TextView
+                        android:id="@+id/whitening_text"
+                        android:layout_width="30dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="3dp"
+                        android:text="美白"
+                        android:textColor="#575757"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.me.filterenginedemo.fragment.NumberSeekBar
+                    android:id="@+id/whitening_seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:max="5"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:progress="2"
+                    android:progressDrawable="@drawable/bg_publish_seekbar"
+                    android:thumb="@drawable/thumb_seek_normal"
+                    app:numberTextColor="@color/color_fec435"
+                    app:numberTextPadding="5dp"
+                    app:numberTextSize="13sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="13.3dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/blur_image"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="left"
+                        android:background="@drawable/icon_blur"/>
+                    <TextView
+                        android:id="@+id/blur_text"
+                        android:layout_width="38dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="3dp"
+                        android:text="磨皮"
+                        android:textColor="#575757"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.me.filterenginedemo.fragment.NumberSeekBar
+                    android:id="@+id/blur_seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:max="5"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:progress="2"
+                    android:progressDrawable="@drawable/bg_publish_seekbar"
+                    android:thumb="@drawable/thumb_seek_normal"
+                    app:numberTextColor="@color/color_fec435"
+                    app:numberTextPadding="5dp"
+                    app:numberTextSize="13sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="13.3dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/redden_image"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="left"
+                        android:background="@drawable/icon_redden"/>
+                    <TextView
+                        android:id="@+id/redden_text"
+                        android:layout_width="38dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="3dp"
+                        android:text="红润"
+                        android:textColor="#575757"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.me.filterenginedemo.fragment.NumberSeekBar
+                    android:id="@+id/redden_seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:max="5"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:progress="2"
+                    android:progressDrawable="@drawable/bg_publish_seekbar"
+                    android:thumb="@drawable/thumb_seek_normal"
+                    app:numberTextColor="@color/color_fec435"
+                    app:numberTextPadding="5dp"
+                    app:numberTextSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- 调节 -->
+    <RelativeLayout
+        android:id="@+id/adjust_layout"
+        android:layout_width="match_parent"
+        android:layout_height="178.3dp"
+        android:background="#b2ffffff"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/brightness_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:background="@drawable/icon_adjust_brightness"/>
+                        <TextView
+                            android:id="@+id/brightness_text"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:text="亮度"
+                            android:textColor="#575757"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.me.filterenginedemo.fragment.NumberSeekBar
+                        android:id="@+id/brightness_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:max="10"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:progress="2"
+                        android:progressDrawable="@drawable/bg_publish_seekbar"
+                        android:thumb="@drawable/thumb_seek_normal"
+                        app:numberTextColor="@color/color_fec435"
+                        app:numberTextPadding="5dp"
+                        app:numberTextSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/contrast_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/icon_adjust_contrast"/>
+                        <TextView
+                            android:id="@+id/contrast_text"
+                            android:layout_width="38dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:text="对比度"
+                            android:textColor="#575757"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.me.filterenginedemo.fragment.NumberSeekBar
+                        android:id="@+id/contrast_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:max="10"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:progress="2"
+                        android:progressDrawable="@drawable/bg_publish_seekbar"
+                        android:thumb="@drawable/thumb_seek_normal"
+                        app:numberTextColor="@color/color_fec435"
+                        app:numberTextPadding="5dp"
+                        app:numberTextSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="13.3dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/exposure_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:background="@drawable/icon_adjust_exposure"/>
+                        <TextView
+                            android:id="@+id/exposure_text"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:text="曝光"
+                            android:textColor="#575757"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.me.filterenginedemo.fragment.NumberSeekBar
+                        android:id="@+id/exposure_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:max="5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:progress="2"
+                        android:progressDrawable="@drawable/bg_publish_seekbar"
+                        android:thumb="@drawable/thumb_seek_normal"
+                        app:numberTextColor="@color/color_fec435"
+                        app:numberTextPadding="5dp"
+                        app:numberTextSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/hue_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/icon_adjust_hue"/>
+                        <TextView
+                            android:id="@+id/hue_text"
+                            android:layout_width="38dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:text="色调"
+                            android:textColor="#575757"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.me.filterenginedemo.fragment.NumberSeekBar
+                        android:id="@+id/hue_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:max="5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:progress="2"
+                        android:progressDrawable="@drawable/bg_publish_seekbar"
+                        android:thumb="@drawable/thumb_seek_normal"
+                        app:numberTextColor="@color/color_fec435"
+                        app:numberTextPadding="5dp"
+                        app:numberTextSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="13.3dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/sharpen_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:background="@drawable/icon_adjust_sharpen"/>
+                        <TextView
+                            android:id="@+id/sharpen_text"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:text="锐化"
+                            android:textColor="#575757"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.me.filterenginedemo.fragment.NumberSeekBar
+                        android:id="@+id/sharpen_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:max="5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:progress="2"
+                        android:progressDrawable="@drawable/bg_publish_seekbar"
+                        android:thumb="@drawable/thumb_seek_normal"
+                        app:numberTextColor="@color/color_fec435"
+                        app:numberTextPadding="5dp"
+                        app:numberTextSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/saturation_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/icon_adjust_saturation"/>
+                        <TextView
+                            android:id="@+id/saturation_text"
+                            android:layout_width="38dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:text="饱和度"
+                            android:textColor="#575757"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.me.filterenginedemo.fragment.NumberSeekBar
+                        android:id="@+id/saturation_seek_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:max="5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:progress="2"
+                        android:progressDrawable="@drawable/bg_publish_seekbar"
+                        android:thumb="@drawable/thumb_seek_normal"
+                        app:numberTextColor="@color/color_fec435"
+                        app:numberTextPadding="5dp"
+                        app:numberTextSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- 滤镜 -->
+    <RelativeLayout
+        android:id="@+id/filter_layout"
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        android:visibility="gone"
+        android:background="#b2ffffff">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#b2b2b2" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E5ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@null">
+
+            <Button
+                android:id="@+id/operation_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="取消"
+                android:textColor="#575757"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#b2b2b2" />
+
+            <Button
+                android:id="@+id/operation_complete"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="完成"
+                android:textColor="#3db5fe"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
