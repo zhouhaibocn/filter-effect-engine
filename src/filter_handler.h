@@ -49,6 +49,8 @@ public:
 
     void getResult(unsigned char *data);
 
+    void getIameSize(int *width, int *height);
+
     void destroy();
 };
 

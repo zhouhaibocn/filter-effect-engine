@@ -2,8 +2,6 @@
 // Created by zhouhaibo on 2017/9/15.
 //
 
-#include <utils/parse_config.h>
-#include "utils/parse_config.h"
 #include "filter_manager.h"
 
 FilterManager::FilterManager() {
@@ -119,8 +117,10 @@ void FilterManager::destroy() {
     mIsInitialized = false;
 }
 
-void FilterManager::getResult(unsigned char *buffer) {
+void FilterManager::getResult(unsigned char *buffer, int width, int height) {
     if (NULL != mMultiInputFilter) {
-//        mMultiInputFilter->getResult(buffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, mFboBufferID);
+        glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 }

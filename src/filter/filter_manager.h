@@ -34,9 +34,7 @@ public:
 
     void destroy();
 
-    // for test
-    void getResult(unsigned char * buffer);
-
+    void getResult(unsigned char * buffer, int width, int height);
 };
 
 

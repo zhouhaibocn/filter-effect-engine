@@ -2,7 +2,6 @@
 // Created by zhouhaibo on 2017/9/20.
 //
 
-#include <utils/parse_config.h>
 #include "multi_input_filter.h"
 
 static ConstString MULTI_INPUT_Default_VSH = GLES_SHADER_STRING(
@@ -39,7 +38,6 @@ MultiInputFilter::MultiInputFilter() {
     mVertexShader = MULTI_INPUT_Default_VSH;
     mFragmentShader = MULTI_INPUT_Default_FSH;
 
-//    rgbaBuf = NULL;
 }
 
 MultiInputFilter::~MultiInputFilter() {
@@ -75,24 +73,6 @@ void MultiInputFilter::init(FilterConfig *filterConfig) {
                 break;
         }
     }
-
-    // 读取文件
-//    ConstString fileName = "/sdcard/filter_asset/antique/inputImage1.bin";
-//    mInputTexture[0] = loadTextureFromBin(fileName);
-//
-//    if (mInputTexture[0] <= 0) {
-//        LOGE("ERROR, Load Texture Failed");
-//    }
-
-//    if (mInputImageNum > 0) {
-//        ConstString fileName = "/sdcard/filter_asset/antique";
-//        FilterConfig *filterConfig = new FilterConfig;
-//
-//        parsingFilterConfig(fileName, filterConfig);
-//        delete filterConfig;
-//        filterConfig = NULL;
-//    }
-
 
     // 创建GL程序
     mProgramId = loadProgram(mVertexShader, mFragmentShader);
@@ -134,10 +114,6 @@ void MultiInputFilter::init(FilterConfig *filterConfig) {
 
     mIsInitialized = true;
 }
-
-//void MultiInputFilter::setParam(float intensity) {
-//
-//}
 
 void MultiInputFilter::process(GLuint textureId, int width, int height) {
     if (mIsInitialized) {
@@ -182,13 +158,6 @@ void MultiInputFilter::internalDraw(int width, int height) {
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     checkGlError("glDrawArrays");
 
-//    // for test
-//    if (rgbaBuf == NULL) {
-//        mLength = width * height * 4;
-//        rgbaBuf = (unsigned char *)malloc(mLength);
-//    }
-//    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, rgbaBuf);
-
     // unbind
     glDisableVertexAttribArray(mVertexCoords);
     glDisableVertexAttribArray(mTextureCoords);
@@ -218,9 +187,3 @@ void MultiInputFilter::destroy() {
     mInputImageNum = 0;
     mIsInitialized = false;
 }
-
-//void MultiInputFilter::getResult(unsigned char *buffer) {
-//    if (buffer != NULL && rgbaBuf != NULL && mLength > 0) {
-//        memcpy(buffer, rgbaBuf, mLength);
-//    }
-//}

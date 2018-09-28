@@ -31,10 +31,6 @@ protected:
     GLint *mInputImageHandle;
     GLuint *mInputTexture;
 
-    // for test
-//    unsigned char * rgbaBuf;
-//    int mLength;
-
 public:
 
     MultiInputFilter();
@@ -46,9 +42,6 @@ public:
     virtual void process(GLuint textureId, int width, int height);
 
     virtual void destroy();
-
-//    // for test
-//    virtual void getResult(unsigned char *buffer);
 
 protected:
     void internalPreProcess(GLuint textureId);

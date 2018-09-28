@@ -68,7 +68,14 @@ JNIEXPORT jobject JNICALL Java_com_me_filterengine_FilterHandler_nativeGetResult
     jmethodID valueOfBitmapConfigFunction = env->GetStaticMethodID(bitmapConfigClass, "valueOf", "(Ljava/lang/String;)Landroid/graphics/Bitmap$Config;");
     jobject bitmapConfig = env->CallStaticObjectMethod(bitmapConfigClass, valueOfBitmapConfigFunction, configName);
     env->DeleteLocalRef(configName);
-    jobject newBitmap = env->CallStaticObjectMethod(bitmapCls, createBitmapFunction, 520, 520, bitmapConfig);
+
+    int width = 0;
+    int height = 0;
+    handler->getIameSize(&width, &height);
+    if (width <= 0 || height <= 0) {
+        return NULL;
+    }
+    jobject newBitmap = env->CallStaticObjectMethod(bitmapCls, createBitmapFunction, width, height, bitmapConfig);
 
     unsigned char* row;
 

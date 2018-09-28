@@ -154,9 +154,12 @@ public class FilterHandler {
 
 
     public String saveImage() {
-        Bitmap bmp = nativeGetResult(mInstance);;
         String path = FileUtils.getFilterFilePath(mContext,"icon");
         String filename = path + "/" + mCurrentFileName + ".jpg";
+        Bitmap bmp = nativeGetResult(mInstance);
+        if (bmp == null) {
+            return null;
+        }
         return saveBitmap(bmp, filename);
     }
 

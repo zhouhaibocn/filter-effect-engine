@@ -135,6 +135,11 @@ void FilterHandler::destroy() {
 
 void FilterHandler::getResult(unsigned char *data) {
     if (mFilterManager != NULL) {
-        mFilterManager->getResult(data);
+        mFilterManager->getResult(data, mImgWidth, mImgHeight);
     }
+}
+
+void FilterHandler::getIameSize(int *width, int *height) {
+    *width = mImgWidth;
+    *height = mImgHeight;
 }
