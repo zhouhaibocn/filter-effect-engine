@@ -4,6 +4,8 @@
 
 #include "adjust_filter.h"
 
+#define LOG_TAG "AdjustFilter"
+
 static ConstString Adjust_Default_VSH = GLES_SHADER_STRING(
         attribute vec2 aPosition;
         attribute vec2 aTexCoord;
@@ -121,82 +123,82 @@ void AdjustFilter::init() {
     // 创建GL程序
     mProgramId = loadProgram(mVertexShader, mFragmentShader);
     if (mProgramId == 0) {
-        LOGE("create gl program error");
+        LOGE(LOG_TAG, "create gl program error");
     }
 
     // 顶点坐标
     mVertexCoords = glGetAttribLocation(mProgramId, "aPosition");
     checkGlError("glGetAttribLocation aPosition");
     if (mVertexCoords == -1) {
-        LOGE("glGetAttribLocation aPosition error");
+        LOGE(LOG_TAG, "glGetAttribLocation aPosition error");
     }
 
     // 纹理坐标
     mTextureCoords = glGetAttribLocation(mProgramId, "aTexCoord");
     checkGlError("glGetAttribLocation aTexCoord");
     if (mTextureCoords == -1) {
-        LOGE("glGetAttribLocation aTexCoord error");
+        LOGE(LOG_TAG, "glGetAttribLocation aTexCoord error");
     }
 
     // 纹理
     mTextureHandle = glGetUniformLocation(mProgramId, "inputImageTexture");
     checkGlError("glGetUniformLocation inputImageTexture");
     if (mTextureHandle == -1) {
-        LOGE("glGetUniformLocation inputImageTexture error");
+        LOGE(LOG_TAG, "glGetUniformLocation inputImageTexture error");
     }
 
     // 亮度
     mBrightnessIntensityHandle = glGetUniformLocation(mProgramId, "brightness");
     checkGlError("glGetUniformLocation brightness");
     if (mBrightnessIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mBrightnessIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mBrightnessIntensityHandle error");
     }
 
     // 对比度
     mContrastIntensityHandle = glGetUniformLocation(mProgramId, "contrast");
     checkGlError("glGetUniformLocation contrast");
     if (mContrastIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mContrastIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mContrastIntensityHandle error");
     }
 
     // 曝光
     mExposureIntensityHandle = glGetUniformLocation(mProgramId, "exposure");
     checkGlError("glGetUniformLocation exposure");
     if (mExposureIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mExposureIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mExposureIntensityHandle error");
     }
 
     // 色调
     mHueIntensityHandle = glGetUniformLocation(mProgramId, "hue");
     checkGlError("glGetUniformLocation hue");
     if (mHueIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mHueIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mHueIntensityHandle error");
     }
 
     // 锐化
     mSharpenIntensityHandle = glGetUniformLocation(mProgramId, "sharpen");
     checkGlError("glGetUniformLocation sharpen");
     if (mSharpenIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mSharpenIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mSharpenIntensityHandle error");
     }
 
     // 饱和度
     mSaturationIntensityHandle = glGetUniformLocation(mProgramId, "saturation");
     checkGlError("glGetUniformLocation saturation");
     if (mSaturationIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mSaturationIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mSaturationIntensityHandle error");
     }
 
     mWidthHandle = glGetUniformLocation(mProgramId, "width");
     checkGlError("glGetUniformLocation width");
     if (mWidthHandle == -1) {
-        LOGE("glGetUniformLocation mWidthHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mWidthHandle error");
     }
 
     mHeightHandle = glGetUniformLocation(mProgramId, "height");
     checkGlError("glGetUniformLocation height");
     if (mHeightHandle == -1) {
-        LOGE("glGetUniformLocation mHeightHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mHeightHandle error");
     }
 
     // default value

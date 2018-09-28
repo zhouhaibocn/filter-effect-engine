@@ -4,6 +4,8 @@
 
 #include "filter_manager.h"
 
+#define LOG_TAG "FilterManager"
+
 FilterManager::FilterManager() {
     mIsInitialized = false;
     mFboTextureID = 0;
@@ -95,7 +97,7 @@ GLuint FilterManager::process(GLuint textureId, int width, int height) {
 
 void FilterManager::destroy() {
     if (!mIsInitialized) {
-        LOGE("BeautifyInterFace is not Initialized");
+        LOGE(LOG_TAG, "BeautifyInterFace is not Initialized");
         return;
     }
 

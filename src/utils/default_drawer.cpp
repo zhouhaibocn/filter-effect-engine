@@ -4,6 +4,8 @@
 
 #include "utils/default_drawer.h"
 
+#define LOG_TAG "DefaultDrawer"
+
 static ConstString Default_VSH = GLES_SHADER_STRING(
         attribute vec2 aPosition;
         attribute vec2 aTexCoord;
@@ -42,7 +44,7 @@ void DefaultDrawer::init() {
     // 创建GL程序
     mProgramId = loadProgram(mVertexShader, mFragmentShader);
     if (mProgramId == 0) {
-        LOGE("create gl program error");
+        LOGE(LOG_TAG, "create gl program error");
     }
 
     // 顶点坐标

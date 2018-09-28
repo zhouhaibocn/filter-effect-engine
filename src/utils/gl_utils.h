@@ -8,6 +8,8 @@
 #include "common/common.h"
 #include "decoder/picture_decoder.h"
 
+#define GLES_CHECK_ERROR_FLAG  true
+
 static const float VERTICE_NO_ROTATION[] = {
         -1.0f, -1.0f,
         1.0f, -1.0f,

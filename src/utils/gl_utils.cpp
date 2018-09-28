@@ -4,11 +4,15 @@
 
 #include "gl_utils.h"
 
+#define LOG_TAG "GlUtils"
+
 bool checkGlError(const char* op) {
-    GLint error;
-    for (error = glGetError(); error; error = glGetError()) {
-        LOGE("after %s() glError (0x%x)\n", op, error);
-        return true;
+    if (GLES_CHECK_ERROR_FLAG) {
+        GLint error;
+        for (error = glGetError(); error; error = glGetError()) {
+            LOGE(LOG_TAG, "after %s() glError (0x%x)\n", op, error);
+            return true;
+        }
     }
     return false;
 }
@@ -27,15 +31,15 @@ GLuint loadShader(GLenum shaderType, ConstString pSource) {
                 char* buf = (char*) malloc(infoLen);
                 if (buf) {
                     glGetShaderInfoLog(shader, infoLen, NULL, buf);
-                    LOGE("Could not compile shader %d:\n%s\n", shaderType, buf);
+                    LOGE(LOG_TAG, "Could not compile shader %d:\n%s\n", shaderType, buf);
                     free(buf);
                 }
             } else {
-                LOGI("Guessing at GL_INFO_LOG_LENGTH size\n");
+                LOGI(LOG_TAG, "Guessing at GL_INFO_LOG_LENGTH size\n");
                 char* buf = (char*) malloc(0x1000);
                 if (buf) {
                     glGetShaderInfoLog(shader, 0x1000, NULL, buf);
-                    LOGE("Could not compile shader %d:\n%s\n", shaderType, buf);
+                    LOGE(LOG_TAG, "Could not compile shader %d:\n%s\n", shaderType, buf);
                     free(buf);
                 }
             }
@@ -71,7 +75,7 @@ GLuint loadProgram(ConstString pVertexSource, ConstString pFragmentSource) {
                 char* buf = (char*) malloc(bufLength);
                 if (buf) {
                     glGetProgramInfoLog(program, bufLength, NULL, buf);
-                    LOGE("Could not link program:\n%s\n", buf);
+                    LOGE(LOG_TAG, "Could not link program:\n%s\n", buf);
                     free(buf);
                 }
             }
@@ -139,7 +143,7 @@ void bindFrameBufferWithMSAA(GLuint frameBuffer, int width, int height) {
 
     // Test the framebuffer for completeness.
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-        LOGE("failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+        LOGE(LOG_TAG, "failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
     }
 }
 
@@ -170,14 +174,14 @@ GLuint loadTextureFromBin(ConstString binName) {
     FILE *fp = NULL;
     fp = fopen(binName, "rb");
     if (NULL == fp) {
-        LOGE("open bin file failed, bin file name: %s", binName);
+        LOGE(LOG_TAG, "open bin file failed, bin file name: %s", binName);
         return 0;
     }
     // 先读取头信息
     uint8_t head[4] = {0};
     size_t  headSize = fread(head, 1, sizeof(head), fp);
     if (headSize != sizeof(head)) {
-        LOGE("read bin head failed, read head size: %d", headSize);
+        LOGE(LOG_TAG, "read bin head failed, read head size: %d", headSize);
         fclose(fp);
         return 0;
     }
@@ -190,7 +194,7 @@ GLuint loadTextureFromBin(ConstString binName) {
 
     size_t rgbaSize = fread(rgbaBuf, 1, length, fp);
     if (rgbaSize != length) {
-        LOGE("read bin data failed, read data size: %d", rgbaSize);
+        LOGE(LOG_TAG, "read bin data failed, read data size: %d", rgbaSize);
         fclose(fp);
         return 0;
     }
@@ -219,7 +223,7 @@ GLuint loadTextureFromPng(ConstString pngName) {
             rgbaBuf = NULL;
         }
     } else {
-        LOGE("decode png file failed");
+        LOGE(LOG_TAG, "decode png file failed");
     }
 
     return target;
@@ -245,7 +249,7 @@ GLuint loadTextureFromPngWithSize(ConstString pngName, int *imgWidth, int *imgHe
             rgbaBuf = NULL;
         }
     } else {
-        LOGE("decode png file failed");
+        LOGE(LOG_TAG, "decode png file failed");
     }
 
     return target;

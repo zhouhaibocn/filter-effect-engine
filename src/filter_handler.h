@@ -5,6 +5,8 @@
 #ifndef FILTERENGINE_FILTER_HANDLER_H
 #define FILTERENGINE_FILTER_HANDLER_H
 
+
+
 #include "beautify/beautify_manager.h"
 #include "filter/adjust/adjust_filter_manager.h"
 #include "filter/filter_manager.h"

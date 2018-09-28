@@ -4,6 +4,8 @@
 
 #include "parse_config.h"
 
+#define LOG_TAG "ParseConfig"
+
 void parsingFilterConfig(ConstString filterZipPath, FilterConfig *filterConfig) {
     if (NULL == filterZipPath || NULL == filterConfig) {
         return ;
@@ -18,7 +20,7 @@ void parsingFilterConfig(ConstString filterZipPath, FilterConfig *filterConfig) 
     FILE *fp = NULL;
     fp = fopen(filename, "rb");
     if (NULL == fp) {
-        LOGE("open bin file failed, bin file name: %s", filename);
+        LOGE(LOG_TAG, "open bin file failed, bin file name: %s", filename);
         return ;
     }
     // 两字节头信息, 一字节type 一字节num
@@ -28,7 +30,7 @@ void parsingFilterConfig(ConstString filterZipPath, FilterConfig *filterConfig) 
     uint8_t head[2] = {0};
     size_t  headSize = fread(head, 1, sizeof(head), fp);
     if (headSize != sizeof(head)) {
-        LOGE("read bin head failed, read numSize: %d", headSize);
+        LOGE(LOG_TAG, "read bin head failed, read numSize: %d", headSize);
         fclose(fp);
         return ;
     }

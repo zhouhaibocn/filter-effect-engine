@@ -4,6 +4,8 @@
 
 #include "filter_handler.h"
 
+#define LOG_TAG "FilterHandler"
+
 FilterHandler::FilterHandler() {
     mIsInitialized = false;
     mViewWidth = -1;
@@ -26,7 +28,7 @@ int FilterHandler::init(ConstString fileName) {
     if (NULL != fileName) {
         mTextureID = loadTextureFromPngWithSize(fileName, &mImgWidth, &mImgHeight);
         if (mTextureID <= 0) {
-            LOGE("loadTexture failed, textureId: %d", mTextureID);
+            LOGE(LOG_TAG, "loadTexture failed, textureId: %d", mTextureID);
         }
     }
 
@@ -73,6 +75,8 @@ int FilterHandler::setFilter(ConstString filter_zip) {
     } else {
         mIsEnableFilter = false;
     }
+
+    LOGE(LOG_TAG, "setFilter, %s", filter_zip);
 
     return 0;
 }

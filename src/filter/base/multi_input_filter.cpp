@@ -4,6 +4,8 @@
 
 #include "multi_input_filter.h"
 
+#define LOG_TAG "MultiInputFilter"
+
 static ConstString MULTI_INPUT_Default_VSH = GLES_SHADER_STRING(
         attribute vec2 aPosition;
         attribute vec2 aTexCoord;
@@ -77,28 +79,28 @@ void MultiInputFilter::init(FilterConfig *filterConfig) {
     // 创建GL程序
     mProgramId = loadProgram(mVertexShader, mFragmentShader);
     if (mProgramId == 0) {
-        LOGE("create gl program error");
+        LOGE(LOG_TAG, "create gl program error");
     }
 
     // 顶点坐标
     mVertexCoords = glGetAttribLocation(mProgramId, "aPosition");
     checkGlError("glGetAttribLocation aPosition");
     if (mVertexCoords == -1) {
-        LOGE("glGetAttribLocation aPosition error");
+        LOGE(LOG_TAG, "glGetAttribLocation aPosition error");
     }
 
     // 纹理坐标
     mTextureCoords = glGetAttribLocation(mProgramId, "aTexCoord");
     checkGlError("glGetAttribLocation aTexCoord");
     if (mTextureCoords == -1) {
-        LOGE("glGetAttribLocation aTexCoord error");
+        LOGE(LOG_TAG, "glGetAttribLocation aTexCoord error");
     }
 
     // 纹理
     mTextureHandle = glGetUniformLocation(mProgramId, "inputImageTexture");
     checkGlError("glGetUniformLocation inputImageTexture");
     if (mTextureHandle == -1) {
-        LOGE("glGetUniformLocation mTextureHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mTextureHandle error");
     }
 
     // inputImage
@@ -108,7 +110,7 @@ void MultiInputFilter::init(FilterConfig *filterConfig) {
         mInputImageHandle[i] = glGetUniformLocation(mProgramId, str);
         checkGlError("glGetUniformLocation inputImageTexture1");
         if (mInputImageHandle[i] == -1) {
-            LOGE("glGetUniformLocation mInputImageHandle error");
+            LOGE(LOG_TAG, "glGetUniformLocation mInputImageHandle error");
         }
     }
 

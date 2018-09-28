@@ -4,6 +4,8 @@
 
 #include "beautify_filter.h"
 
+#define LOG_TAG "BeautufyFilter"
+
 static ConstString Beautify_Default_VSH = GLES_SHADER_STRING(
     attribute vec2 aPosition;
     attribute vec2 aTexCoord;
@@ -192,61 +194,61 @@ void BeautifyFilter::init() {
     // 创建GL程序
     mProgramId = loadProgram(mVertexShader, mFragmentShader);
     if (mProgramId == 0) {
-        LOGE("create gl program error");
+        LOGE(LOG_TAG, "create gl program error");
     }
 
     // 顶点坐标
     mVertexCoords = glGetAttribLocation(mProgramId, "aPosition");
     checkGlError("glGetAttribLocation aPosition");
     if (mVertexCoords == -1) {
-        LOGE("glGetAttribLocation aPosition error");
+        LOGE(LOG_TAG, "glGetAttribLocation aPosition error");
     }
 
     // 纹理坐标
     mTextureCoords = glGetAttribLocation(mProgramId, "aTexCoord");
     checkGlError("glGetAttribLocation aTexCoord");
     if (mTextureCoords == -1) {
-        LOGE("glGetAttribLocation aTexCoord error");
+        LOGE(LOG_TAG, "glGetAttribLocation aTexCoord error");
     }
 
     // 纹理
     mTextureHandle = glGetUniformLocation(mProgramId, "inputImageTexture");
     checkGlError("glGetUniformLocation inputImageTexture");
     if (mTextureHandle == -1) {
-        LOGE("glGetUniformLocation inputImageTexture error");
+        LOGE(LOG_TAG, "glGetUniformLocation inputImageTexture error");
     }
 
     // 亮度-美白
     mWhitenIntensityHandle = glGetUniformLocation(mProgramId, "brightness");
     checkGlError("glGetUniformLocation brightness");
     if (mWhitenIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mWhitenIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mWhitenIntensityHandle error");
     }
 
     // 模糊-磨皮
     mSmoothIntensityHandle = glGetUniformLocation(mProgramId, "blur");
     checkGlError("glGetUniformLocation blur");
     if (mSmoothIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mSmoothIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mSmoothIntensityHandle error");
     }
 
     // 色调-红润
     mReddenIntensityHandle = glGetUniformLocation(mProgramId, "hue");
     checkGlError("glGetUniformLocation hue");
     if (mReddenIntensityHandle == -1) {
-        LOGE("glGetUniformLocation mReddenIntensityHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mReddenIntensityHandle error");
     }
 
     mWidthHandle = glGetUniformLocation(mProgramId, "width");
     checkGlError("glGetUniformLocation width");
     if (mWidthHandle == -1) {
-        LOGE("glGetUniformLocation mWidthHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mWidthHandle error");
     }
 
     mHeightHandle = glGetUniformLocation(mProgramId, "height");
     checkGlError("glGetUniformLocation height");
     if (mHeightHandle == -1) {
-        LOGE("glGetUniformLocation mHeightHandle error");
+        LOGE(LOG_TAG, "glGetUniformLocation mHeightHandle error");
     }
 
     mWhitenIntensity = 0.0f;
