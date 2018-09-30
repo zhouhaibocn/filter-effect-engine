@@ -19,7 +19,7 @@ public:
 
     virtual void setParam(float params);
 
-    virtual void process(GLuint textureId);
+    virtual void process(GLuint textureId, int width, int height) = 0;
 
     virtual void destroy();
 };

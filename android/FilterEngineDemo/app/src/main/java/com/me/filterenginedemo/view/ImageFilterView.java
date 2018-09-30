@@ -1,20 +1,13 @@
 package com.me.filterenginedemo.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.me.filterengine.FileUtils;
 import com.me.filterengine.FilterHandler;
 import com.me.filterenginedemo.MeApplication;
 import com.me.filterenginedemo.fragment.ConstantFilters;
-
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -139,8 +132,6 @@ public class ImageFilterView extends GLSurfaceView implements GLSurfaceView.Rend
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-//        mImageFilter.init(mFileName);
-
         if (mSurfaceCreatedCallback != null) {
             mSurfaceCreatedCallback.surfaceCreated();
         }

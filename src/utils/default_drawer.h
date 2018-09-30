@@ -16,6 +16,9 @@ private:
     GLint mTextureCoords;
     GLint mTextureHandle;
 
+    // VAO
+    GLuint mVAOId;
+
 public:
     DefaultDrawer();
 

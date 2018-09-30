@@ -20,9 +20,9 @@ void FilterInterface::setParam(float param) {
 
 }
 
-void FilterInterface::process(GLuint textureId) {
-
-}
+//void FilterInterface::process(GLuint textureId) {
+//
+//}
 
 void FilterInterface::destroy() {
 

@@ -76,8 +76,6 @@ int FilterHandler::setFilter(ConstString filter_zip) {
         mIsEnableFilter = false;
     }
 
-    LOGE(LOG_TAG, "setFilter, %s", filter_zip);
-
     return 0;
 }
 

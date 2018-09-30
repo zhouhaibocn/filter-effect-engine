@@ -31,6 +31,7 @@ DefaultDrawer::DefaultDrawer() {
     mTextureCoords = -1;
     mVertexCoords = -1;
     mTextureHandle = -1;
+    mVAOId = 0;
 
     mVertexShader = Default_VSH;
     mFragmentShader = Default_FSH;
@@ -58,6 +59,28 @@ void DefaultDrawer::init() {
     // 纹理
     mTextureHandle = glGetUniformLocation(mProgramId, "inputImageTexture");
     checkGlError("glGetUniformLocation inputImageTexture");
+
+    // VAO
+    glGenVertexArrays(1, &mVAOId);
+    glBindVertexArray(mVAOId);
+
+    GLuint vboId[2];
+    glGenBuffers(2, vboId);
+
+    glEnableVertexAttribArray(mVertexCoords);
+    glBindBuffer(GL_ARRAY_BUFFER, vboId[0]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(VERTICE_NO_ROTATION), VERTICE_NO_ROTATION, GL_STATIC_DRAW);
+    glVertexAttribPointer(mVertexCoords, 2, GL_FLOAT, 0, 2 * 4, NULL);
+
+    glEnableVertexAttribArray(mTextureCoords);
+    glBindBuffer(GL_ARRAY_BUFFER, vboId[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(TEXTURE_ROTATED_180), TEXTURE_ROTATED_180, GL_STATIC_DRAW);
+    glVertexAttribPointer(mTextureCoords, 2, GL_FLOAT, 0, 2 * 4, NULL);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+
+    glDeleteBuffers(2, vboId);
 }
 
 
@@ -67,17 +90,7 @@ void DefaultDrawer::process(GLuint textureId, int width, int height) {
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClearColor(0.0, 0.0, 0.0, 0);
 
-    // 顶点数据
-    glVertexAttribPointer(mVertexCoords, 2, GL_FLOAT, 0, 0, VERTICE_NO_ROTATION);
-    checkGlError("glVertexAttribPointer aPosition");
-    glEnableVertexAttribArray(mVertexCoords);
-    checkGlError("glEnableVertexAttribArray mVertexCoords");
-
-    // 纹理数据
-    glVertexAttribPointer(mTextureCoords, 2, GL_FLOAT, 0, 0, TEXTURE_ROTATED_180);
-    checkGlError("glVertexAttribPointer aTexCoord");
-    glEnableVertexAttribArray(mTextureCoords);
-    checkGlError("glEnableVertexAttribArray mTextureCoords");
+    glBindVertexArray(mVAOId);
 
     // 渲染
     glActiveTexture(GL_TEXTURE0);
@@ -88,9 +101,7 @@ void DefaultDrawer::process(GLuint textureId, int width, int height) {
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     checkGlError("glDrawArrays");
 
-    // unbind
-    glDisableVertexAttribArray(mVertexCoords);
-    glDisableVertexAttribArray(mTextureCoords);
+    glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
@@ -98,5 +109,9 @@ void DefaultDrawer::destroy() {
     if (mProgramId != 0) {
         glDeleteProgram(mProgramId);
         checkGlError("glDeleteProgram mProgramId");
+    }
+
+    if (mVAOId != 0) {
+        glDeleteVertexArrays(1, &mVAOId);
     }
 }
